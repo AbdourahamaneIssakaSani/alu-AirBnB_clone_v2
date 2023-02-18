@@ -182,9 +182,11 @@ class HBNBCommand(cmd.Cmd):
             if '"' in param[1]:
                 # any double quote inside the value must
                 # be escaped with a backslash \
-                param[1] = param[1].replace('"', '\"')
+                if '"' or "'" in param[1]:
+                    param[1] = param[1].replace('"', '\"')
                 # all underscores _ must be replaced by spaces
-                param[1] = param[1].replace('_', ' ')
+                if '_' in param[1]:
+                    param[1] = param[1].replace('_', ' ')
             else:
                 try:
                     if '.' in param[1]:
@@ -277,12 +279,12 @@ class HBNBCommand(cmd.Cmd):
         print_list = []
 
         if args:
-            args = args.split(' ')[0]  # remove possible trailing args
-            if args not in self.classes:
+            class_name = args.split()[0]
+            if class_name not in self.classes:
                 print("** class doesn't exist **")
                 return
             for k, v in storage.all().items():
-                if k.split('.')[0] == args:
+                if k.split('.')[0] == class_name:
                     print_list.append(str(v))
         else:
             for k, v in storage.all().items():
