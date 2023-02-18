@@ -182,8 +182,8 @@ class HBNBCommand(cmd.Cmd):
             if '"' in param[1]:
                 # any double quote inside the value must
                 # be escaped with a backslash \
-                if '"' or "'" in param[1]:
-                    param[1] = param[1].replace('"', '\"')
+                # if '"' or "'" in param[1]:
+                #     param[1] = param[1].replace('"', '\"')
                 # all underscores _ must be replaced by spaces
                 if '_' in param[1]:
                     param[1] = param[1].replace('_', ' ')
