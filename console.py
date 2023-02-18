@@ -171,29 +171,27 @@ class HBNBCommand(cmd.Cmd):
             print("** class doesn't exist **")
             return
         new_instance = self.classes[class_name]()
-        for i in range(len(args[1:])):
-            param = args[i + 1].split('=')
-
-            if '"' in param[1]:
-                # any double quote inside the value must
-                # be escaped with a backslash \
-                # if '"' or "'" in param[1]:
-                #     param[1] = param[1].replace('"', '\"')
-                # all underscores _ must be replaced by spaces
-                if '_' in param[1]:
-                    param[1] = param[1].replace('_', ' ')
+        for params in args[1:]:
+            if "=" not in params:
+                continue
+            key, value = params.split('=')
+            value = value.replace('_', ' ')
+            if value.startswith('"') and value.endswith('"'):
+                value = value[1:-1].replace('\\"', '"')
+            elif '.' in value:
+                try:
+                    value = float(value)
+                except ValueError:
+                    continue
             else:
                 try:
-                    if '.' in param[1]:
-                        param[1] = float(param[1])
-                    else:
-                        param[1] = int(param[1])
+                    value = int(value)
                 except ValueError:
-                    param[1] = None
+                    continue
 
-            if param[1] is not None and param[1] != "" and hasattr(
-                    new_instance, param[0]):
-                setattr(new_instance, param[0], param[1])
+            if value is not None and value != "" and hasattr(
+                    new_instance, key):
+                setattr(new_instance, key, value)
 
         print(new_instance.id)
         new_instance.save()
