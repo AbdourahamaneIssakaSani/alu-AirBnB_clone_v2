@@ -6,7 +6,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, String, Integer, Float, ForeignKey
 from sqlalchemy.orm import relationship
 from models.review import Review
-from models.__init__ import storage
+import models
 
 
 class Place(BaseModel, Base):
@@ -35,7 +35,7 @@ class Place(BaseModel, Base):
             """Returns the list of Review instances with place_id equals
             to the current Place.id."""
             review_list = []
-            reviews = list(storage.all(Review).values())
+            reviews = list(models.storage.all(Review).values())
 
             return list(
                 filter(lambda review: (review.place_id == self.id), reviews))
