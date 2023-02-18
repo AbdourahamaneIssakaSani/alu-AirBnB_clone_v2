@@ -38,7 +38,10 @@ class Place(BaseModel, Base):
                              viewonly=False)
 
     if os.getenv("HBNB_TYPE_STORAGE", None) == "db":
-        pass
+        reviews = relationship("Review", backref="place")
+        amenities = relationship("Amenity", secondary="place_amenity",
+                                 viewonly=False,
+                                 back_populates="place_amenities")
 
     if os.getenv("HBNB_TYPE_STORAGE", None) != "db":
         @property
