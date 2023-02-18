@@ -64,12 +64,13 @@ class BaseModel:
 
     def to_dict(self):
         """Convert instance into dict format"""
-        for key in self.__dict__.keys():
-            if key == "_sa_instance_state":
-                del (self.__dict__[key])
 
         dictionary = {}
         dictionary.update(self.__dict__)
+        for key in self.__dict__.keys():
+            if key == "_sa_instance_state":
+                del (dictionary[key])
+
         dictionary.update({'__class__': self.__class__.__name__})
         dictionary['created_at'] = self.created_at.isoformat()
         dictionary['updated_at'] = self.updated_at.isoformat()
