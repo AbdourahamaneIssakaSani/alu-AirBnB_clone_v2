@@ -73,15 +73,10 @@ class HBNBCommand(cmd.Cmd):
         'latitude': float, 'longitude': float
     }
 
-    # def preloop(self):
-    #     """
-    #     Hook method that is executed once before the command loop
-    #     ``cmdloop`` starts.
-    #     In this case, it prints (hbnb) if isatty is false (i.e. the script is
-    #     not running in a terminal)
-    #     """
-    #     if not sys.__stdin__.isatty():
-    #         print('(hbnb)')
+    def preloop(self):
+        """Prints if isatty is false"""
+        if not sys.__stdin__.isatty():
+            print('(hbnb)')
 
     def precmd(self, line):
         """Reformat command line for advanced command syntax.
