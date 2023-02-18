@@ -26,9 +26,9 @@ class BaseModel:
             if "id" not in kwargs:
                 kwargs["id"] = str(uuid.uuid4())
             if "created_at" not in kwargs:
-                kwargs["created_at"] = datetime.utcnow()
+                kwargs["created_at"] = self.created_at.isoformat()
             if "updated_at" not in kwargs:
-                kwargs["updated_at"] = datetime.utcnow()
+                kwargs["updated_at"] = self.created_at.isoformat()
 
             for key, value in kwargs.items():
                 if key == 'updated_at':
