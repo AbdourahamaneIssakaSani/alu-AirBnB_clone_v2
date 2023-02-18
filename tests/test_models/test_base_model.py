@@ -8,7 +8,7 @@ import json
 import os
 
 
-class test_basemodel(unittest.TestCase):
+class TestBaseModel(unittest.TestCase):
     """ """
 
     def __init__(self, *args, **kwargs):
@@ -60,7 +60,7 @@ class test_basemodel(unittest.TestCase):
         """ """
         i = self.value()
         self.assertEqual(str(i), '[{}] ({}) {}'.format(self.name, i.id,
-                         i.__dict__))
+                                                       i.__dict__))
 
     def test_todict(self):
         """ """
