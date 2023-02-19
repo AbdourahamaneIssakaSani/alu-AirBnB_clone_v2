@@ -39,7 +39,7 @@ class BaseModel:
                     kwargs[key] = datetime.strptime(
                         value,
                         '%Y-%m-%dT%H:%M:%S.%f')
-                if key != '__class__' or key != '_sa_instance_state':
+                if key != '__class__' and hasattr(self, key):
                     setattr(self, key, value)
 
             del kwargs['__class__']
