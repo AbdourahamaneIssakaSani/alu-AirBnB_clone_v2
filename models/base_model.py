@@ -3,7 +3,7 @@
 import uuid
 from datetime import datetime
 from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, String, DateTime
 
 Base = declarative_base()
 
@@ -39,7 +39,7 @@ class BaseModel:
                     kwargs[key] = datetime.strptime(
                         value,
                         '%Y-%m-%dT%H:%M:%S.%f')
-                if key != '__class__':
+                if key != '__class__' or key != '_sa_instance_state':
                     setattr(self, key, value)
 
             del kwargs['__class__']
