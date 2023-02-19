@@ -1,14 +1,15 @@
 #!/usr/bin/python3
+"""Test for console"""
 import unittest
 
 from console import HBNBCommand
 from unittest.mock import patch
 from io import StringIO
 import models
-from models import FileStorage
 
 
 class ConsoleTestCase(unittest.TestCase):
+    """Test for console"""
 
     def setUp(self):
         self.console = HBNBCommand()
