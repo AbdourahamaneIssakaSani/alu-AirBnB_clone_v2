@@ -34,13 +34,13 @@ class Place(BaseModel, Base):
     longitude = Column(Float)
     amenity_ids = []
 
-    if os.getenv("HBNB_TYPE_STORAGE", None) == "db":
+    if os.getenv("HBNB_TYPE_STORAGE") == "db":
         reviews = relationship("Review", backref="place", cascade="delete")
         amenities = relationship("Amenity", secondary="place_amenity",
                                  viewonly=False,
                                  back_populates="place_amenities")
 
-    if os.getenv("HBNB_TYPE_STORAGE", None) != "db":
+    if os.getenv("HBNB_TYPE_STORAGE") != "db":
         @property
         def reviews(self):
             """Returns the list of Review instances with place_id equals
