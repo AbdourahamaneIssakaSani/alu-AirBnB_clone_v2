@@ -82,5 +82,5 @@ def deploy():
     archive_pack = do_pack()
     if archive_pack is None:
         return False
-    deploy = do_deploy(archive_pack)
-    return deploy
+    deployed = do_deploy(archive_pack)
+    return deployed
