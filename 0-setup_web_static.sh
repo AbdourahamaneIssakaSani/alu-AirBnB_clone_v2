@@ -7,7 +7,7 @@ directories=("/data/web_static/releases/test", "/data/web_static/current", "/dat
 
 for directory in "${directories[@]}"; do
   if [ ! -e "$directory" ]; then
-    mkdir "$directory"
+    mkdir -p "$directory"
   fi
 done
 
