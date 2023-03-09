@@ -3,7 +3,7 @@
 apt-get update
 apt-get -y install nginx
 
-directories=("/data/web_static/releases/test", "/data/web_static/current", "/data/web_static/shared/")
+directories=("/data/web_static/releases/test" "/data/web_static/current" "/data/web_static/shared/")
 
 for directory in "${directories[@]}"; do
   #  if [ ! -e "$directory" ]; then
