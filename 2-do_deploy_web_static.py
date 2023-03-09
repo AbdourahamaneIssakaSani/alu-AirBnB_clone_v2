@@ -2,6 +2,7 @@
 """Comment"""
 from fabric.api import *
 import os
+import re
 
 env.user = 'ubuntu'
 env.hosts = ['3.80.74.138', '3.88.68.105']
@@ -13,9 +14,10 @@ def do_deploy(archive_path):
     # Check if the archive file exists
     if not os.path.isfile(archive_path):
         return False
-
+    filename_regex = re.compile(r'[^/]+\.tgz$')
+    match = filename_regex.search(archive_path)
     # Upload the archive to the /tmp/ directory of the web server
-    archive_filename = os.path.basename(archive_path)
+    archive_filename = match.group(0)
     result = put(archive_path, "/tmp/{}".format(archive_filename))
     if result.failed:
         return False
