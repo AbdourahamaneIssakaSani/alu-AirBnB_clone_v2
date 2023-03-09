@@ -6,9 +6,9 @@ apt-get -y install nginx
 directories=("/data/web_static/releases/test", "/data/web_static/current", "/data/web_static/shared/")
 
 for directory in "${directories[@]}"; do
-  if [ ! -e "$directory" ]; then
-    mkdir -p "$directory"
-  fi
+  #  if [ ! -e "$directory" ]; then
+  mkdir -p "$directory"
+  #  fi
 done
 
 echo "<html>
