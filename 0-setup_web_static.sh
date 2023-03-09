@@ -27,6 +27,6 @@ ln --symbolic --force /data/web_static/releases/test /data/web_static/current
 # recursively to all files and directories within the folder
 chown -R ubuntu:ubuntu /data/
 
-sed -i '/server_name/a \ \n    location /hbnb_static/ {\n        alias /data/web_static/current/;\n        index index.html;\n    }' /etc/nginx/sites-available/default
+sed -i '/server_name/a \ \n    location /hbnb_static {\n        alias /data/web_static/current/;\n        index index.html;\n    }' /etc/nginx/sites-available/default
 
 service nginx restart
