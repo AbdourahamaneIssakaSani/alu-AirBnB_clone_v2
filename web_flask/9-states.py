@@ -21,7 +21,7 @@ def state_list():
 
 
 @app.route('/states/<id>', strict_slashes=False)
-def states__by_id(id):
+def states_by_id(id):
     """Comment"""
     all_states = storage.all('State')
     try:
