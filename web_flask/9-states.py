@@ -23,19 +23,15 @@ def state_list():
 @app.route('/states/<id>', strict_slashes=False)
 def states_by_id(id):
     """Comment"""
-    all_states = storage.all(State)
-    state = None
-    for s in all_states.values():
-        if s.id == id:
-            state = s
-            break
-
-    if state:
+    all_states = storage.all('State')
+    key = "State.".format(id)
+    try:
+        state = all_states[key]
         return render_template(
             '9-states.html',
             state=state,
             condition="state_id")
-    else:
+    except KeyError:
         return render_template('9-states.html', condition="not_found")
 
 
