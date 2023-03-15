@@ -33,7 +33,7 @@ def states_by_id(id):
     if state:
         return render_template(
             '9-states.html',
-            state_id=id,
+            state=state,
             condition="state_id")
     else:
         return render_template('9-states.html', condition="not_found")
