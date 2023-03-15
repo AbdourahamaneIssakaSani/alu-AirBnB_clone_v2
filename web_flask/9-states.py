@@ -24,8 +24,13 @@ def state_list():
 def states_by_id(id):
     """Comment"""
     all_states = storage.all('State')
+    state = None
+    for s in all_states.values():
+        if s.id == id:
+            state = s
+            break
 
-    if id in all_states:
+    if state:
         return render_template(
             '9-states.html',
             state_id=id,
