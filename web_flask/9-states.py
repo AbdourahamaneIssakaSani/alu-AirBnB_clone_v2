@@ -23,7 +23,7 @@ def state_list():
 @app.route('/states/<id>', strict_slashes=False)
 def states_by_id(id):
     """Comment"""
-    all_states = storage.all('State')
+    all_states = storage.all(State)
     state = None
     for s in all_states.values():
         if s.id == id:
