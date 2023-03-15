@@ -24,7 +24,7 @@ def state_list():
 def states_by_id(id):
     """Comment"""
     all_states = storage.all('State')
-    key = "State.".format(id)
+    key = "State.{}".format(id)
     try:
         state = all_states[key]
         return render_template(
