@@ -24,13 +24,13 @@ def state_list():
 def states_by_id(id):
     """Comment"""
     all_states = storage.all('State')
-    try:
-        state_id = all_states[id]
+
+    if id in all_states:
         return render_template(
             '9-states.html',
-            state_id=state_id,
+            state_id=id,
             condition="state_id")
-    except:
+    else:
         return render_template('9-states.html', condition="not_found")
 
 
