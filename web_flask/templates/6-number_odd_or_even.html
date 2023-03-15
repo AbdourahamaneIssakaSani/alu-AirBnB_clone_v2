@@ -5,7 +5,7 @@
     <TITLE>Odd | Even</TITLE>
 </HEAD>
 <BODY>
-{% if num % 2 == 0 %}
+{% if num is divisibleby(2) %}
 <H1>Number: {{ num }} is even</H1>
 {% else %}
 <H1>Number: {{ num }} is odd</H1>
