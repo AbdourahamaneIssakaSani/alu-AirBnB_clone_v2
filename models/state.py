@@ -30,6 +30,7 @@ class State(BaseModel, Base):
         # no time to fix
         @property
         def cities(self):
-            """Getter attribute in case of file storage"""
+            """ Returns the list of City instances with state_id
+            equals to the current State.id. """
             return [city for city in models.storage.all(City).values()
                     if city.state_id == self.id]
