@@ -46,7 +46,7 @@ def num_route_template(n):
 @app.route('/number_odd_or_even/<int:n>', strict_slashes=False)
 def num_route_even_odd(n):
     """Comment"""
-    return render_template("6-number_odd_or_even.html", n=n)
+    return render_template("6-number_odd_or_even.html", num=n)
 
 
 if __name__ == '__main__':
