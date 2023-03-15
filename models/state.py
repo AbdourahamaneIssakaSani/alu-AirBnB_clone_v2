@@ -20,9 +20,16 @@ class State(BaseModel, Base):
                               cascade='all, delete-orphan')
 
     if os.getenv("HBNB_TYPE_STORAGE") != "db":
+        # @property
+        # def cities(self):
+        #     """ Returns the list of City instances with state_id
+        #     equals to the current State.id. """
+        #     all_cities = list(models.storage.all(City).values())
+        #     return list(filter(lambda city: (city.id == self.id),
+        #     all_cities))
+        # no time to fix
         @property
         def cities(self):
-            """ Returns the list of City instances with state_id
-            equals to the current State.id. """
-            all_cities = list(models.storage.all(City).values())
-            return list(filter(lambda city: (city.id == self.id), all_cities))
+            """Getter attribute in case of file storage"""
+            return [city for city in models.storage.all(City).values()
+                    if city.state_id == self.id]
