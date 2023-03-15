@@ -31,7 +31,7 @@ def states_by_id(id):
             '9-states.html',
             state=state,
             condition="state_id")
-    except KeyError:
+    except:
         return render_template('9-states.html', condition="not_found")
 
 
